@@ -1,0 +1,19 @@
+<app-header></app-header>
+<div class="container-fluid">
+   <div class="row">
+     <!-- Menú a la izquierda -->
+     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+       <!-- Contenido del menú -->
+       <app-nav></app-nav> <!-- Aqui siempre queda el menu -->
+     </nav>
+      
+     <!-- Área de trabajo (dashboard) a la derecha -->
+     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+       <!-- Contenido del dashboard -->
+       
+         <router-outlet></router-outlet>
+       
+     </main>
+   </div>
+ </div>
+ 
