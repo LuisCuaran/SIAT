@@ -13,7 +13,7 @@ import { ComprasComponent } from './modulos/compras/compras.component';
 import { UsuariosComponent } from './modulos/usuarios/usuarios.component';
 import { ProductosComponent } from './modulos/productos/productos.component';
 import { DetalleComprasComponent } from './modulos/detalle-compras/detalle-compras.component';
-import { DetalleVentasComponent } from './modulos/detalle-ventas/detalle-ventas.component';
+import { DetalleVentasComponent } from './modulos/detalleventas/detalle-ventas.component';
 import { DetalleOrdenTrabajoComponent } from './modulos/detalle-orden-trabajo/detalle-orden-trabajo.component';
 
 const routes: Routes = [{
@@ -29,7 +29,7 @@ const routes: Routes = [{
     {path: "ventas", component: VentasComponent },
     {path: "compras", component: ComprasComponent },
     {path: "productos", component: ProductosComponent },
-    {path: "detalle_compras",component: DetalleComprasComponent},
+    {path: "detalle-compras",component: DetalleComprasComponent},
     {path: "detalle_ventas",component: DetalleVentasComponent},
     {path: "detalle_orden_trabajo",component: DetalleOrdenTrabajoComponent},
     {path: "", redirectTo: "/dashboard", pathMatch: "full"}

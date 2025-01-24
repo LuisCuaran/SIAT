@@ -19,7 +19,7 @@ import { VentasComponent } from './modulos/ventas/ventas.component';
 import { ComprasComponent } from './modulos/compras/compras.component';
 import { ProveedoresComponent } from './modulos/proveedores/proveedores.component';
 import { ProductosComponent } from './modulos/productos/productos.component';
-import { DetalleVentasComponent } from './modulos/detalle-ventas/detalle-ventas.component';
+import { DetalleVentasComponent } from './modulos/detalleventas/detalle-ventas.component';
 import { DetalleComprasComponent } from './modulos/detalle-compras/detalle-compras.component';
 import { DetalleOrdenTrabajoComponent } from './modulos/detalle-orden-trabajo/detalle-orden-trabajo.component';
 

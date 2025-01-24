@@ -1,1 +1,69 @@
-<p>clientes works!</p>
+<h3>Bienvenido</h3>
+
+<button class="btn btn-primary" (click)="mostrar(1)" >insertar clientes</button><br><br>
+
+<div id="formulario"*ngIf="verf==true">
+    <div class="row">
+        <div class="col-lg-6">
+            <input type="text" id="nombre" class="form-control" [(ngModel)]="user.nombre">
+            <span style="color: red;" *ngIf="validnombre==false">Nombre</span>
+        </div>
+        <div class="col-lg-6">
+            <input type="text" id="direccion" class="form-control" [(ngModel)]="user.direccion">
+            <span style="color: red;" *ngIf="validdireccion==false">Direccion</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <input type="text" id="telefono" class="form-control" [(ngModel)]="user.telefono">
+            <span style="color: red;" *ngIf="validtelefono==false">Telefono</span>
+        </div>
+        <div class="col-lg-6">
+            <input type="text" id="email" class="form-control" [(ngModel)]="user.email">
+            <span style="color: red;" *ngIf="validemail==false">Email</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <button class="btn btn-success" (click)="ingresar()">Guardar</button>
+        </div>
+        <div class="col-lg-3">
+            <button class="btn btn-warning">Editar</button>
+        </div>
+        <div class="col-lg-3">
+            <button class="btn btn-secondary"(click)="mostrar(0)">cancelar</button>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+
+</div>
+<div class="table-responsive">
+    <table class="table table-success table-striped-columns" border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Opciones</th>
+        </tr>
+         <!--mostrar los campos de clientes de la base de datos-->
+        <tr *ngFor="let item of cliente" >
+            <td>{{item.nombre}}</td>
+            <td>{{item.direccion}}</td>
+            <td>{{item.telefono}}</td>
+            <td>{{item.email}}</td>
+            <td>
+                <!-- Enlace para cargar datos (editar) -->
+<a (click)="cargardatos(item, item.id_cliente)"> <!-- Llama a la función cargardatos al hacer clic -->
+    <span class="fas fa-edit editar" title="Editar"></span> <!-- Ícono de edición con título "Editar" -->
+  </a>
+  
+  <!-- Enlace para eliminar -->
+  <a (click)="pregunta(item.id_cliente, item.nombre)"> <!-- Llama a la función pregunta al hacer clic -->
+    <span class="fas fa-trash-alt eliminar" title="Eliminar"></span> <!-- Ícono de eliminación con título "Eliminar" -->
+  </a>
+  
+            </td>
+        </tr>
+    </table>
+</div>

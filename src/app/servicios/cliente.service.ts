@@ -11,11 +11,11 @@ export class clienteService {
   constructor(private http: HttpClient) { }
 
   consultar() {
-    return this.http.get(`${this.url}consultar.php`);
+    return this.http.get(`${this.url}consulta.php`);
   }
   
-  insertar(articulo: any) {
-    return this.http.post(`${this.url}insertar.php`, JSON.stringify(articulo));
+  insertar(cliente: any) {
+    return this.http.post(`${this.url}insertar.php`, JSON.stringify(cliente));
   }
 
   eliminar(id: number) {
