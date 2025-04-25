@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { clienteService } from 'src/app/servicios/cliente.service';
 import Swal from 'sweetalert2';
 
+
+
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
@@ -40,6 +42,9 @@ export class ClientesComponent implements OnInit{
     switch(dato){
       case 0:
         this.verf=false;
+        this.beditar=false;
+        this.iduser="";
+        this.limpiar();
         break;
         case 1:
           this.verf=true;
@@ -146,6 +151,22 @@ pregunta(id: any, nombre:any){ //funcion
     this.iduser = id;
     this.mostrar(1);
     this.beditar=true;
+   }
+
+   editar(){
+   //console.log(this.cat);
+   this.validar();
+
+   if(this.validnombre==true && this.validdireccion==true && this.validtelefono==true && this.validemail==true ){
+ this.suser.editar(this.user, this.iduser).subscribe((datos:any)=>{//se llama al servicio insertary mando los servicios donde los guarda y manda un resultado ok
+   if (datos['resultado']=='OK') {
+     //alert(datos['mensaje']);
+     this.consulta();//muestra la consulta
+   }
+ })
+ this.mostrar(0);//mostrar, cero para que el formulario se muestre automaticamente
+ 
+}
    }
 
 }

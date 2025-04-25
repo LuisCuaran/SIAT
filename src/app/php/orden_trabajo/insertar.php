@@ -11,14 +11,14 @@ require("../conexion.php");
 // Consulta corregida
 //$ins = "insert into orden_trabajo(fecha, estado, descripcion, fo_cliente) values ('2024-01-10', 'activo', 'Reparacion de motor', '1')"; //descomenta para hacer prueba
 
-$ins = "insert into orden_trabajo(fecha, estado, descripcion, fo_cliente) values ('$params->fecha', '$params->estado', '$params->descripcion', '$params->fo_cliente')"; // se comenta para hacer pruebas
+$ins = "insert into orden(fecha, estado, descripcion, fo_cliente) values ('$params->fecha', '$params->estado', '$params->descripcion', '$params->fo_cliente')"; // se comenta para hacer pruebas
 
 mysqli_query($conexion, $ins) or die('no inserto');
 
 class Result {}
 
 $response = new Result();
-$response->resultado = 'ok';
+$response->resultado = 'OK';
 $response->mensaje ='datos grabados';
 
 header('Content-Type: application/json');

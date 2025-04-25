@@ -1,1 +1,72 @@
-<p>productos works!</p>
+<h3>PRODUCTOS</h3>
+<button class="btn btn-primary" (click)="mostrar(1)">Insertar producto</button><br><br>
+
+<div id="formulario" *ngIf="verf == true">
+    <div class="row">
+        <div class="col-lg-6">
+            <input type="text" id="Nombre" class="form-control" [(ngModel)]="producto.nombre" placeholder="Nombre del producto">
+            <span  style="color: red;" *ngIf="validNombre==false">Nombre</span>
+        </div>
+        <div class="col-lg-6">
+            <input type="text" id="Descripcion" class="form-control" [(ngModel)]="producto.descripcion" placeholder="Descripción">
+            <span  style="color: red;" *ngIf="validDescripcion==false">Descripción</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <input type="number" id="Precio" class="form-control" [(ngModel)]="producto.precio" placeholder="Precio">
+            <span  style="color: red;" *ngIf="validPrecio==false">Precio</span>
+        </div>
+        <div class="col-lg-6">
+            <input type="number" id="Stock" class="form-control" [(ngModel)]="producto.stock" placeholder="Stock">
+            <span  style="color: red;" *ngIf="validStock==false">Stock</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <button *ngIf="beditar==false" class="btn btn-success" (click)="ingresar()">Guardar</button>
+        </div>
+        <div class="col-lg-3">
+            <button *ngIf="beditar==true" class="btn btn-primary" (click)="editar()">Editar</button>
+        </div>
+        <div class="col-lg-3">
+            <button class="btn btn-secondary" (click)="mostrar(0)">Cancelar</button>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-success table-striped-columns" border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Opciones</th>
+        </tr>
+        <!-- Mostrar los productos de la base de datos -->
+        <tr *ngFor="let item of productos">
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.descripcion }}</td>
+            <td>{{ item.precio }}</td>
+            <td>{{ item.stock }}</td>
+            <td>
+                <!-- Enlace para cargar datos (editar) -->
+<!-- Llama a la función cargardatos al hacer clic, pasando el objeto completo (item) y su id_cliente -->
+             <a (click)="cargarDatos(item, item.id_producto)"> 
+                <!-- Ícono de edición con el título "Editar" -->
+                          <span class="fas fa-edit editar" title="Editar"></span>
+                        </a>
+              
+              <!-- Enlace para eliminar -->
+              <!-- Llama a la función pregunta al hacer clic, pasando el id_producto y el nombre del producto -->
+                         <a (click)="pregunta(item.id_producto, item.nombre)"> 
+                <!-- Ícono de eliminación con el título "Eliminar" -->
+                          <span class="fas fa-trash-alt eliminar" title="Eliminar"></span>
+                        </a>
+            </td>
+        </tr>
+    </table>
+</div>
+

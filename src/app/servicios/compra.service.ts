@@ -11,12 +11,13 @@ export class compraService {
   constructor(private http: HttpClient) { }
 
   consultar() {
-    return this.http.get(`${this.url}consultar.php`);
+    return this.http.get(`${this.url}consulta.php`);
   }
   
-  insertar(articulo: any) {
-    return this.http.post(`${this.url}insertar.php`, JSON.stringify(articulo));
+  insertar(compra: any) {
+    return this.http.post(`${this.url}insertar.php`, JSON.stringify(compra));
   }
+  
 
   eliminar(id: number) {
     return this.http.get(`${this.url}eliminar.php?id=${id}`);

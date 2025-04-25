@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './estructura/header/header.component';
@@ -19,7 +21,7 @@ import { VentasComponent } from './modulos/ventas/ventas.component';
 import { ComprasComponent } from './modulos/compras/compras.component';
 import { ProveedoresComponent } from './modulos/proveedores/proveedores.component';
 import { ProductosComponent } from './modulos/productos/productos.component';
-import { DetalleVentasComponent } from './modulos/detalleventas/detalle-ventas.component';
+import { DetalleVentaComponent } from './modulos/detalleventas/detalle-ventas.component';
 import { DetalleComprasComponent } from './modulos/detalle-compras/detalle-compras.component';
 import { DetalleOrdenTrabajoComponent } from './modulos/detalle-orden-trabajo/detalle-orden-trabajo.component';
 
@@ -41,7 +43,7 @@ import { DetalleOrdenTrabajoComponent } from './modulos/detalle-orden-trabajo/de
     ComprasComponent,
     ProveedoresComponent,
     ProductosComponent,
-    DetalleVentasComponent,
+    DetalleVentaComponent,
     DetalleComprasComponent,
     DetalleOrdenTrabajoComponent
   ],
@@ -49,7 +51,9 @@ import { DetalleOrdenTrabajoComponent } from './modulos/detalle-orden-trabajo/de
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,72 @@
-<p>detalle-ventas works!</p>
+<h3>Detalle de Ventas</h3>
+<button class="btn btn-primary" (click)="verf = true">Consultar Detalle ventas</button><br><br>
+
+<!-- FORMULARIO PARA INSERTAR O EDITAR -->
+<div *ngIf="verf" id="formulario">
+    <div class="row">
+        <div class="col-lg-6">
+            <label>Cantidad:</label>
+            <input type="number" [(ngModel)]="detalleVenta.cantidad" class="form-control">
+        </div>
+        <div class="col-lg-6">
+            <label>Precio Total:</label>
+            <input type="number" [(ngModel)]="detalleVenta.precioTotal" class="form-control">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <label>Venta:</label>
+            <select [(ngModel)]="detalleVenta.fo_ventas" class="form-control">
+                <option *ngFor="let venta of ventas" [value]="venta.id_ventas">{{ venta.fecha }} - {{ venta.total }}</option>
+            </select>
+        </div>
+        <div class="col-lg-6">
+            <label>Producto:</label>
+            <select [(ngModel)]="detalleVenta.fo_producto" class="form-control">
+                <option *ngFor="let producto of productos" [value]="producto.id_producto">{{ producto.nombre }}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <button class="btn btn-success" (click)="beditar ? editar() : insertar()">
+                {{ beditar ? 'Actualizar' : 'Guardar' }}
+            </button>
+        </div>
+        <div class="col-lg-3">
+            <button class="btn btn-secondary" (click)="verf = false; beditar = false;">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<!-- TABLA PARA MOSTRAR LOS DETALLES DE VENTA -->
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cantidad</th>
+                <th>Precio Total</th>
+                <th>Venta</th>
+                <th>Producto</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of detalleVentas">
+                <td>{{ item.id_detalleventa }}</td>
+                <td>{{ item.cantidad }}</td>
+                <td>{{ item.precioTotal | currency }}</td>
+                <td>{{ item.fecha }} - {{ item.total | currency }}</td>
+                <td>{{ item.nombre_producto }}</td>
+                <td>
+                    <button class="btn btn-warning btn-sm" (click)="cargarDatos(item)">Editar</button>
+                    <button class="btn btn-danger btn-sm" (click)="eliminar(item.id_detalleventa)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

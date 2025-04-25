@@ -4,7 +4,7 @@ header("Access-Control-Allow-Headers: origin, X-Requested-With, Content-Type, Ac
 
 require("../conexion.php");
 
-$con = "SELECT * FROM detalleventa ORDER BY cantidad";
+$con = "SELECT * FROM detalleventa ORDER BY id";
 
 $res = mysqli_query($conexion, $con) or die("No se pudo consultar detalle venta");
 

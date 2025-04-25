@@ -1,1 +1,69 @@
-<p>compras works!</p>
+
+<div class="container mt-3">
+    <h2>Gestión de Compras</h2>
+  
+    <!-- Botón para agregar nueva compra -->
+    <button class="btn btn-success" (click)="mostrar(1)">Nueva Compra</button>
+  
+    <!-- Formulario de Compras -->
+    <div *ngIf="verf" >
+  
+    <div class="row">
+      <div class="col-lg-3">
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" [(ngModel)]="compra.fecha" class="form-control" [class.is-invalid]="!validFecha">
+      </div>
+
+      <div class="col-lg-6">
+        <label for="proveedor">Proveedor</label>
+        <input type="text" id="proveedor" [(ngModel)]="compra.fo_proveedores" class="form-control" [class.is-invalid]="!validProveedor">
+      </div>
+  
+      <div class="col-lg-3">
+        <label for="total">Total</label>
+        <input type="number" id="total" [(ngModel)]="compra.total" class="form-control" [class.is-invalid]="!validTotal">
+      </div>
+  
+     
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+          <button *ngIf="!beditar" class="btn btn-primary" (click)="ingresar()">Guardar</button>
+          
+        </div>
+        <div class="col-lg-4">
+          <button class="btn btn-secondary" (click)="mostrar(0)">Cancelar</button>
+        </div>
+        <div class="col-lg-4">
+          <button *ngIf="beditar" class="btn btn-warning" (click)="editar()">Actualizar</button>
+        </div>
+       
+    </div>
+  </div>
+    <!-- Tabla de Compras -->
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Total</th>
+          <th>Proveedor</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let compra of compras">
+
+          <td>{{ compra.fecha }}</td>
+          <td>{{ compra.total }}</td>
+          <td>{{ compra.fo_proveedores }}</td>
+          <td>
+            
+            <button class="btn btn-warning btn-sm me-2" (click)="cargardatos(compra, compra.id)">Editar</button>
+          
+            <button class="btn btn-danger btn-sm" (click)="pregunta(compra.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

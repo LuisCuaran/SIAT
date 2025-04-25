@@ -5,30 +5,30 @@
 <div id="formulario"*ngIf="verf==true">
     <div class="row">
         <div class="col-lg-6">
-            <input type="text" id="nombre" class="form-control" [(ngModel)]="user.nombre">
-            <span style="color: red;" *ngIf="validnombre==false">Nombre</span>
+            <input type="text" id="nombre" class="form-control" [(ngModel)]="user.nombre" placeholder="Nombre">
+            <span  style="color: red;" *ngIf="validnombre==false">Nombre</span>
         </div>
         <div class="col-lg-6">
-            <input type="text" id="direccion" class="form-control" [(ngModel)]="user.direccion">
+            <input type="text" id="direccion" class="form-control" [(ngModel)]="user.direccion" placeholder="Direccion">
             <span style="color: red;" *ngIf="validdireccion==false">Direccion</span>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-6">
-            <input type="text" id="telefono" class="form-control" [(ngModel)]="user.telefono">
+            <input type="text" id="telefono" class="form-control" [(ngModel)]="user.telefono" placeholder="Telefono">
             <span style="color: red;" *ngIf="validtelefono==false">Telefono</span>
         </div>
         <div class="col-lg-6">
-            <input type="text" id="email" class="form-control" [(ngModel)]="user.email">
+            <input type="text" id="email" class="form-control" [(ngModel)]="user.email" placeholder="Gmail">
             <span style="color: red;" *ngIf="validemail==false">Email</span>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-3">
-            <button class="btn btn-success" (click)="ingresar()">Guardar</button>
+            <button *ngIf="beditar==false" class="btn btn-success" (click)="ingresar()">Guardar</button>
         </div>
         <div class="col-lg-3">
-            <button class="btn btn-warning">Editar</button>
+            <button *ngIf="beditar==true" class="btn btn-primary" (click)="editar()">Editar</button>
         </div>
         <div class="col-lg-3">
             <button class="btn btn-secondary"(click)="mostrar(0)">cancelar</button>
@@ -54,14 +54,18 @@
             <td>{{item.email}}</td>
             <td>
                 <!-- Enlace para cargar datos (editar) -->
-<a (click)="cargardatos(item, item.id_cliente)"> <!-- Llama a la función cargardatos al hacer clic -->
-    <span class="fas fa-edit editar" title="Editar"></span> <!-- Ícono de edición con título "Editar" -->
-  </a>
+<!-- Llama a la función cargardatos al hacer clic, pasando el objeto completo (item) y su id_cliente -->
+             <a (click)="cargardatos(item, item.id_cliente)"> 
+    <!-- Ícono de edición con el título "Editar" -->
+              <span class="fas fa-edit editar" title="Editar"></span>
+            </a>
   
   <!-- Enlace para eliminar -->
-  <a (click)="pregunta(item.id_cliente, item.nombre)"> <!-- Llama a la función pregunta al hacer clic -->
-    <span class="fas fa-trash-alt eliminar" title="Eliminar"></span> <!-- Ícono de eliminación con título "Eliminar" -->
-  </a>
+  <!-- Llama a la función pregunta al hacer clic, pasando el id_cliente y el nombre del cliente -->
+             <a (click)="pregunta(item.id_cliente, item.nombre)"> 
+    <!-- Ícono de eliminación con el título "Eliminar" -->
+              <span class="fas fa-trash-alt eliminar" title="Eliminar"></span>
+            </a>
   
             </td>
         </tr>

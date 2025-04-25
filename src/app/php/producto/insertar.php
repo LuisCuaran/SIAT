@@ -19,7 +19,7 @@ mysqli_query($conexion, $ins) or die('no inserto');
 class Result {}
 
 $response = new Result();
-$response->resultado = 'ok';
+$response->resultado = 'OK';
 $response->mensaje ='Producto Registrado';
 
 header('Content-Type: application/json');

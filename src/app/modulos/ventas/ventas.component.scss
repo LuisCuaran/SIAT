@@ -1,0 +1,48 @@
+#formulario {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.table th {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+}
+
+.table td {
+    text-align: center;
+}
+
+.btn-sm {
+    margin-right: 5px;
+}
+.btn-action {
+    margin-right: 10px; /* Ajusta el espacio según necesites */
+}
+.editar-opcion {
+    cursor: pointer; /* Aparece la "manito" */
+    color: blue; /* Color azul */
+}
+
+.eliminar-opcion {
+    cursor: pointer; /* Aparece la "manito" */
+    color: red; /* Color rojo */
+}
+
+.editar-opcion:hover {
+    background-color: lightblue; /* Fondo al pasar el mouse */
+}
+
+.eliminar-opcion:hover {
+    background-color: lightcoral; /* Fondo al pasar el mouse */
+}
+
+

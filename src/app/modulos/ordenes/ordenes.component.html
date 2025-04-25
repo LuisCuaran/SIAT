@@ -1,1 +1,78 @@
-<p>ordenes works!</p>
+<h3>Órdenes de Trabajo</h3>
+
+<button class="btn btn-primary" (click)="mostrar(1)">Insertar Orden</button><br><br>
+
+<div id="formulario" *ngIf="verf == true">
+    <div class="row">
+        <div class="col-lg-6">
+            <input type="text" class="form-control" [(ngModel)]="orden.cliente" placeholder="Cliente">
+            <span style="color: red;" *ngIf="validCliente==false">Ingrese el nombre del cliente</span>
+        </div>
+        <div class="col-lg-6">
+            <input type="text" class="form-control" [(ngModel)]="orden.descripcion" placeholder="Descripción">
+            <span style="color: red;" *ngIf="validDescripcion==false">Ingrese una descripción</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <input type="date" class="form-control" [(ngModel)]="orden.fecha">
+            <span style="color: red;" *ngIf="validFecha==false">Seleccione una fecha</span>
+        </div>
+        <div class="col-lg-6">
+            <select class="form-control" [(ngModel)]="orden.estado" >
+                <option value="">Seleccione estado</option>
+                <option value="Pendiente">Pendiente</option>
+                <option value="En proceso">En proceso</option>
+                <option value="Finalizado">Finalizado</option>
+            </select>
+            <span style="color: red;" *ngIf="validEstado==false">Seleccione un estado</span>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-lg-3">
+            <button *ngIf="beditar==false" class="btn btn-success" (click)="ingresar()">Guardar</button>
+        </div>
+        <div class="col-lg-3">
+            <button *ngIf="beditar==true" class="btn btn-primary" (click)="editar()">Editar</button>
+        </div>
+        <div class="col-lg-3">
+            <button class="btn btn-secondary" (click)="mostrar(0)">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive mt-3">
+    <table class="table table-striped">
+        <tr>
+            
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Descripción</th>
+            <th>Cliente</th>
+            <th>Opciones</th>
+        </tr>
+        <tr *ngFor="let item of orden_trabajo">
+            
+            <td>{{ item.fecha | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ item.estado }}</td>
+            <td>{{ item.descripcion }}</td>
+            <td>{{ item.fo_cliente }}</td>
+            <td>
+                 <!-- Enlace para cargar datos (editar) -->
+<!-- Llama a la función cargardatos al hacer clic, pasando el objeto completo (item) y su id_cliente -->
+             <a (click)="cargardatos(item, item.id_orden_trabajo)"> 
+                <!-- Ícono de edición con el título "Editar" -->
+                          <span class="fas fa-edit editar" title="Editar"></span>
+                        </a>
+              
+              <!-- Enlace para eliminar -->
+              <!-- Llama a la función pregunta al hacer clic, pasando el id_producto y el nombre del producto -->
+                         <a (click)="pregunta(item.id_orden, item.cliente)"> 
+                <!-- Ícono de eliminación con el título "Eliminar" -->
+                          <span class="fas fa-trash-alt eliminar" title="Eliminar"></span>
+                        </a>
+                
+            </td>
+        </tr>
+    </table>
+</div>
